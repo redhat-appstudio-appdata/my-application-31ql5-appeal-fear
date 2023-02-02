@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/instance: my-application-devfile-sample-code-with-quarkus-jjjo-sample
     spec:
       containers:
-      - image: quay.io/redhat-appstudio/user-workload:abhindas-tenant-my-application-devfile-sample-code-with-quarkus-jjjo-sample
+      - image: quay.io/redhat-appstudio/user-workload@sha256:6d915f6022b7dde7cfdb626f58e1427b9a92fc2473da251a7f35b57b9255ab05
         imagePullPolicy: Always
         livenessProbe:
           httpGet:

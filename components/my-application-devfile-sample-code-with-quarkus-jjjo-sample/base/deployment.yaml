@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: my-application-devfile-sample-code-with-quarkus-jjjo-sample
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: my-application-devfile-sample-code-with-quarkus-jjjo-sample
+    app.kubernetes.io/part-of: my-application
+  name: my-application-devfile-sample-code-with-quarkus-jjjo-sample
+  namespace: abhindas-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: my-application-devfile-sample-code-with-quarkus-jjjo-sample
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: my-application-devfile-sample-code-with-quarkus-jjjo-sample
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:abhindas-tenant-my-application-devfile-sample-code-with-quarkus-jjjo-sample
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: container-image
+        ports:
+        - containerPort: 8081
+        readinessProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          tcpSocket:
+            port: 8081
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100Mi
+status: {}

@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-7vbl
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-7vbl
+    app.kubernetes.io/part-of: my-application
+  name: devfile-sample-7vbl
+  namespace: abhindas-tenant
+spec:
+  port:
+    targetPort: 3001
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: devfile-sample-7vbl
+    weight: 100
+status: {}
